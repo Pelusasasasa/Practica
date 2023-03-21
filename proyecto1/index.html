@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz_Game</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h3>Juego de Capitales</h3>
+    <main>
+        <div class="pregunta">
+            <h4 class="title">1- Cual es la capital de Italia</h4>
+            <div class="respuesta">
+                <input type="radio" name="respuesta1" id="turin">
+                <label for="turin">Turin</label>
+            </div>
+            <div class="respuesta">
+                <input type="radio" name="respuesta1" id="napoles">
+                <label for="napoles">Napoles</label>
+            </div>
+            <div class="respuesta">
+                <input type="radio" name="respuesta1" value="true" id="roma">
+                <label for="roma">Roma</label>
+            </div>
+        </div>
+
+        <div class="pregunta">
+            <h4 class="title">1- Cual es la capital de Canada</h4>
+            <div class="respuesta">
+                <input type="radio" name="respuesta2" id="candberra">
+                <label for="candberra">Candberra</label>
+            </div>
+            <div class="respuesta">
+                <input type="radio" name="respuesta2" id="toronto">
+                <label for="toronto">Toronto</label>
+            </div>
+            <div class="respuesta">
+                <input type="radio" name="respuesta2" value="true" id="ottawa">
+                <label for="ottawa">Ottawa</label>
+            </div>
+        </div>
+
+        <div class="pregunta">
+            <h4 class="title">1- Cual es la capital de Noruega</h4>
+            <div class="respuesta">
+                <input type="radio" name="respuesta3" value="true" id="oslo">
+                <label for="oslo">Oslo</label>
+            </div>
+            <div class="respuesta">
+                <input type="radio" name="respuesta3" id="bucarest">
+                <label for="bucarest">Bucarest</label>
+            </div>
+            <div class="respuesta">
+                <input type="radio" name="respuesta3" id="madrid">
+                <label for="madrid">Madrid</label>
+            </div>
+        </div>
+
+        <div class="pregunta">
+            <h4 class="title">4- Cual es la capital de Peru</h4>
+            <div class="respuesta">
+                <input type="radio" name="respuesta4" id="laPaz">
+                <label for="laPaz">La Paz</label>
+            </div>
+            <div class="respuesta">
+                <input type="radio" name="respuesta4" id="peru">
+                <label for="peru">Ciudad del Peru</label>
+            </div>
+            <div class="respuesta">
+                <input type="radio" name="respuesta4" id="lima" value="true">
+                <label for="lima">Lima</label>
+            </div>
+        </div>
+    </main>
+
+    <section class="final">
+        <button id="corregir">COREGGIR</button>
+        <p>Cantidad acertadas: <span id="cantidad"></span></p>
+    </section>
+    <script src="./index.js"></script>
+</body>
+</html>
