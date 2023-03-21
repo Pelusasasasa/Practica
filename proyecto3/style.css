@@ -1,0 +1,54 @@
+html{
+    padding: 20px 40px;
+}
+
+body{
+    background: url('./fondo.jpg');
+    background-size: cover;
+    color: #262626;
+}
+
+main{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
+
+.container{
+    border-radius: 8px;
+    background-color: orange;
+    padding: 20px;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.operacion{
+    display: flex;
+}
+
+.operacion p{
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.respuestas p{
+    background-color: #262626;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.respuestas p:hover{
+    background-color: #424242;
+    cursor: pointer;
+}
