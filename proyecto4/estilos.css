@@ -1,0 +1,42 @@
+body > div{
+    display: grid;
+    justify-content: center;
+}
+
+section{
+    border: .1rem solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: lightgray;
+    padding: 20px;
+}
+
+select{
+    border-radius: 8px;
+    padding: 3px;
+    background-color: white;
+    font-size: 15px;
+}
+
+section > div{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+section > div > p{
+    margin: 0 10px;
+}
+
+input{
+    padding: 15px;
+}
+
+.respuesta{
+    background-color: black;
+    color: red;
+    padding: 15px;
+    font-size: 20px;
+}
