@@ -4,12 +4,18 @@ html{
     scroll-behavior: smooth;
 }
 
+body{
+    margin: 0;
+}
 
 .none{
     display: none;
 }
 
 nav{
+    position: fixed;
+    width: 100%;
+    margin-top: 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -276,6 +282,22 @@ header{
     margin: 0;
     width: 100%;
     background-color: rgba(0,0,0,0.8);
+}
+
+
+.contacto{
+    display: grid;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.contacto h1{
+    border-bottom: 10px solid lightgray;
+}
+
+.contacto .inputs{
+    width: 100%;
 }
 
 @media (max-width: 1250px){

@@ -52,3 +52,17 @@ h1{
     background-color: #424242;
     cursor: pointer;
 }
+
+#resultadoTexto{
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+}
+
+.correcto{
+    color: green;
+}
+
+.incorrecto{
+    color: red;
+}
