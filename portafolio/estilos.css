@@ -15,6 +15,7 @@ body{
 nav{
     position: fixed;
     width: 100%;
+    z-index: 999;
     margin-top: 0;
     display: flex;
     justify-content: space-around;
@@ -186,6 +187,10 @@ header{
     height: 300px;
 }
 
+.tarjeta h2{
+    text-align: center;
+}
+
 .tarjeta i{
     background: gray;
     border-radius: 50%;
@@ -293,15 +298,66 @@ header{
 }
 
 .contacto h1{
+    text-align: center;
+    margin: 20px auto;
     border-bottom: 10px solid lightgray;
 }
 
 .contacto .inputs{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.contacto input{
+.contacto input,.contacto textarea{
+    border-radius: 8px;
+    border:1px solid lightgray;
     font-size: 25px;
+}
+
+.contacto button{
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.contacto button:hover{
+    cursor: pointer;
+    background-color: rgb(201, 68, 68);
+    color: white;
+}
+
+.enProceso::after{
+    content: "En Proceso";
+    letter-spacing: 20px;
+    font-size: 30px;
+    color: rgb(139, 139, 139);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-45deg);
+    padding: 0 20px;
+}
+
+
+.fondoEnProceso{
+    background-color: rgba(0,0,0,.7);
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0,0,0);
+    color: white;
+    padding-bottom: 20px;
 }
 
 @media (max-width: 1250px){
@@ -314,11 +370,24 @@ header{
     .servicios .tarjetas{
         grid-template-columns: 1fr 1fr;
     }
+    .proyectos{
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (max-width: 1000px){
     .sobreMi .imagen{
         width: 200px;
+    }
+}
+
+@media(max-width:450px){
+    .contacto input,.contacto textarea{
+        font-size: 20px;
+    }
+
+    .contacto .inputs > div input:nth-child(1){
+        margin-bottom: 20px;
     }
 }
 
@@ -337,6 +406,10 @@ header{
     }
 
     .servicios .tarjetas{
+        grid-template-columns: 1fr;
+    }
+
+    .proyectos{
         grid-template-columns: 1fr;
     }
     
