@@ -13,4 +13,4 @@ corregir.addEventListener('click',e=>{
     }
 
     cantidad.innerHTML = contador;
-});
+});zzzz
