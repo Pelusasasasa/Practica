@@ -1,25 +1,53 @@
 
 import { Button } from "@/components/ui/button"
-import { X } from "lucide-react"
-import { Link, Outlet } from "react-router"
-import { ContactList } from "../components/ContactList"
-import { NoContactSelected } from "../components/NoContactSelected"
-import { ContactInfoSkeleton } from "../components/ContactInfoSkeleton"
+import { LogOut, X } from "lucide-react"
+import { Link, Navigate, Outlet, useNavigate } from "react-router"
+import { ContactList } from "../components/contact-details/ContactList"
+import { ContactDetails } from "../components/contact-details/ContactDetails"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { checkAuth } from "@/fake/fake-data"
 
 export default function ChatLayout() {
+    const queryClient = useQueryClient();
+    const navigate = useNavigate();
+
+    const onLogOut = () => {
+        queryClient.invalidateQueries({ queryKey: ['user'] });
+        localStorage.removeItem('token');
+
+        navigate('/auth', { replace: true })
+    };
+
+
+    const { data: user } = useQuery({
+        queryKey: ['user'],
+        queryFn: () => {
+            const token = localStorage.getItem('token');
+            return checkAuth(token ?? '')
+        },
+        staleTime: 1000 * 60 * 60
+    });
+
     return (
-        <div className="flex h-screen bg-background">
+        <div className="flex flex-1 bg-background">
             {/* Sidebar */}
             <div className="w-64 border-r bg-muted/10">
                 <div className="p-4 border-b">
                     <div className="flex items-center gap-2">
                         <div className="h-6 w-6 rounded-full bg-primary" />
                         <Link to='/chat'>
-                            <span className="font-semibold">NexTalk</span>
+                            <span className="font-semibold">{user?.name ?? '...'}</span>
                         </Link>
                     </div>
                 </div>
-                <ContactList/>
+                <ContactList />
+
+                <div className="p-4" onClick={onLogOut}>
+                    <Button size='sm' variant='ghost' className="w-full cursor-pointer">
+                        <LogOut className="h-4 w-4" />
+                        LogOut
+                    </Button>
+                </div>
             </div>
 
             {/* Main Content */}
@@ -37,7 +65,7 @@ export default function ChatLayout() {
                             </Button>
                         </div>
                     </header>
-                    <Outlet/>
+                    <Outlet />
                 </div>
 
                 {/* Right Panel - Contact Details */}
@@ -45,9 +73,7 @@ export default function ChatLayout() {
                     <div className="h-14 border-b px-4 flex items-center">
                         <h2 className="font-medium">Contact details</h2>
                     </div>
-                    <ContactInfoSkeleton/>
-                    <NoContactSelected/>
-                    {/*<ContactInfo/>*/}
+                    <ContactDetails />
                 </div>
             </div>
         </div>
