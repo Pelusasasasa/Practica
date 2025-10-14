@@ -29,7 +29,9 @@ export function links() {
   ];
 }
 
-export async function clientLoader() {
+
+export async function clientLoader({params}: Route.ClientLoaderArgs) {
+
   await sleep(1500)
   return {hola: 'Mundo'};
 }
@@ -68,6 +70,8 @@ export default function TestingArgsPage({
   params,
   matches,
 }: Route.ComponentProps) {
+  const { id, name, age } = params;
+  console.log({id, name, age})
   return (
     <div>
       <h1 className="font-bold text-2xl">Testing Args  Page</h1>
