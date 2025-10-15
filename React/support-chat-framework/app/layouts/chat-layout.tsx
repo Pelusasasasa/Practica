@@ -1,20 +1,29 @@
 
 import { LogOut, X } from 'lucide-react'
 import React from 'react'
-import { Outlet } from 'react-router'
+import { Form, Outlet, redirect } from 'react-router'
 import ContactInformationCard from '~/chat/components/contact-information-card/ContactInformationCard'
 import ContactList from '~/chat/components/ContactList'
 import { Button } from '~/components/ui/button'
-import {  getClients } from '~/fake/fake-data'
+import { getClients } from '~/fake/fake-data'
 import type { Route } from './+types/chat-layout'
+import { getSession } from '~/sessions.server'
 
-export async function loader() {
+
+export async function loader({ request }: Route.LoaderArgs) {
+    const session = await getSession(request.headers.get('Cookie'));
+
+    if (!session.get('userId')) {
+        return redirect('/auth/login')
+    };
+
     const clients = await getClients();
     return { clients };
 };
 
+
 const ChatLayout = ({ loaderData }: Route.ComponentProps) => {
-    
+
     const { clients } = loaderData
 
     return (
@@ -28,14 +37,14 @@ const ChatLayout = ({ loaderData }: Route.ComponentProps) => {
                     </div>
                 </div>
 
-                <ContactList clients={clients}/>
+                <ContactList clients={clients} />
 
-                <div className='p-4 border-t cursor-pointer'>
+                <Form method='post' action={'/auth/logout'} className='p-4 border-t cursor-pointer'>
                     <Button variant="default" className="w-full text-center">
                         <LogOut />
                         Log Out
                     </Button>
-                </div>
+                </Form>
             </div>
 
             {/* Main Content */}
@@ -63,7 +72,7 @@ const ChatLayout = ({ loaderData }: Route.ComponentProps) => {
                     <div className="h-14 border-b px-4 flex items-center">
                         <h2 className="font-medium">Contact details</h2>
                     </div>
-                    <ContactInformationCard/>
+                    <ContactInformationCard />
                 </div>
             </div>
         </div>
