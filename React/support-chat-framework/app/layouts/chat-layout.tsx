@@ -1,11 +1,10 @@
 
 import { LogOut, X } from 'lucide-react'
-import React from 'react'
-import { Form, Outlet, redirect } from 'react-router'
+import { Form, Link, Outlet, redirect } from 'react-router'
 import ContactInformationCard from '~/chat/components/contact-information-card/ContactInformationCard'
 import ContactList from '~/chat/components/ContactList'
 import { Button } from '~/components/ui/button'
-import { getClients } from '~/fake/fake-data'
+import { getClient, getClients } from '~/fake/fake-data'
 import type { Route } from './+types/chat-layout'
 import { getSession } from '~/sessions.server'
 
@@ -13,18 +12,25 @@ import { getSession } from '~/sessions.server'
 export async function loader({ request }: Route.LoaderArgs) {
     const session = await getSession(request.headers.get('Cookie'));
 
+    const userName = session.get('name');
+
     if (!session.get('userId')) {
         return redirect('/auth/login')
     };
-
     const clients = await getClients();
-    return { clients };
+
+    if(id){
+        const client = await getClient(id);
+        return {client, userName, clients}
+    };
+
+    return { clients, userName };
 };
 
 
-const ChatLayout = ({ loaderData }: Route.ComponentProps) => {
+const ChatLayout = ({ loaderData }: Route.ComponentProps) => { 
 
-    const { clients } = loaderData
+    const { clients, userName, client} = loaderData;
 
     return (
         <div className="flex h-screen bg-background">
@@ -33,7 +39,7 @@ const ChatLayout = ({ loaderData }: Route.ComponentProps) => {
                 <div className="p-4 border-b">
                     <div className="flex items-center gap-2">
                         <div className="h-6 w-6 rounded-full bg-primary" />
-                        <span className="font-semibold">NexTalk</span>
+                        <Link to='/chat' className="font-semibold">{userName}</Link>
                     </div>
                 </div>
 
@@ -72,7 +78,7 @@ const ChatLayout = ({ loaderData }: Route.ComponentProps) => {
                     <div className="h-14 border-b px-4 flex items-center">
                         <h2 className="font-medium">Contact details</h2>
                     </div>
-                    <ContactInformationCard />
+                    <ContactInformationCard client={client} />
                 </div>
             </div>
         </div>

@@ -24,6 +24,10 @@ export default [
             index('routes/chat/no-chat-selected-page.tsx'),
             route('client/:id', './routes/chat/client-chat-page.tsx')
         ])
-    ])
+    ]),
+
+
+    // Products
+    route('productos/:name', './routes/product.tsx')
 
 ] satisfies RouteConfig;

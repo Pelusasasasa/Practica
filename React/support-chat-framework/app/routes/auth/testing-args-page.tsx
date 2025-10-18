@@ -72,9 +72,12 @@ export default function TestingArgsPage({
 }: Route.ComponentProps) {
   const { id, name, age } = params;
   console.log({id, name, age})
+
   return (
     <div>
-      <h1 className="font-bold text-2xl">Testing Args  Page</h1>
+      <h1 className="font-bold text-2xl">Name: {name}</h1>
+      <h4 className="font-bold text-2xl">Age: {age}</h4>
+      <h5 className="font-bold text-2xl">Id: {id}</h5>
       <p>Loader Data: {JSON.stringify(loaderData)}</p>
       <p>Action Data: {JSON.stringify(actionData)}</p>
       <p>Route Parameters: {JSON.stringify(params)}</p>

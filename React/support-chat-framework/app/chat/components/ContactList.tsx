@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router'
+import { NavLink, useParams } from 'react-router'
 import { Button } from '~/components/ui/button'
 import { ScrollArea } from '~/components/ui/scroll-area'
 import type { Client } from '../interfaces/chat-interface'
@@ -8,6 +8,8 @@ interface Props {
 }
 
 const ContactList = ({clients}: Props) => {
+
+    const {id} = useParams();
     
   return (
     <ScrollArea className="h-[calc(100vh-120px)]">
@@ -16,13 +18,14 @@ const ContactList = ({clients}: Props) => {
                     <h3 className="px-2 text-sm font-semibold">Contacts</h3>
                     <div className="space-y-1">
                         {clients.map((client) => (
-                        <NavLink to={`/chat/client/${client.id}`} key={client.id} className={({ isActive }) => isActive
-                            ? 'w-full my-2 justify-start flex items-center gap-2 bg-primary/20 text-primary transition-all duration-300'
+                        <NavLink to={`/chat/client/${client.id}`} key={client.id} className={({ isActive, isPending }) => isActive
+                            ? 'w-full my-2 justify-start flex items-center gap-2 bg-blue-500 rounded-lg text-primary transition-all duration-300'
+                            : isPending ? 'w-full my-2 justify-start rounded-lg flex items-center gap-2 bg-primary/20 text-primary transition-all duration-300'
                             : 'w-full justify-start flex items-center gap-2 transition-all duration-300'}>
                             <div className="h-6 w-6 rounded-full bg-gray-300 mr-2 flex-shrink-0 flex items-center justify-center text-white text-xs">
                                 <p>{client.name[0]}{client.name[1]}</p>
                             </div>
-                            <span className='text-gray-400'>{client.name}</span>
+                            <span className={`${id === client.id ? 'text-white' : 'text-black'}`}>{client.name}</span>
                         </NavLink>
                                 ))}
                                 
