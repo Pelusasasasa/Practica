@@ -1,0 +1,22 @@
+###GET
+GET http://localhost:8000/api/categoria.php
+
+
+###POST
+POST http://localhost:8000/api/categoria.php
+Content-Type: application/json
+
+{
+  "nombre": "Comida"
+}
+
+###PUT
+PUT http://localhost:8000/api/categoria.php?id=1
+Content-Type: application/json
+
+{
+  "nombre": "Transporte"
+}
+
+###DELETE
+DELETE http://localhost:8000/api/categoria.php?id=1

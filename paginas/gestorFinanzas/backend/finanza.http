@@ -1,0 +1,29 @@
+###GET
+GET http://localhost:8000/api/finanza.php
+
+
+###POST
+POST http://localhost:8000/api/finanza.php
+Content-Type: application/json
+
+{
+  "descripcion": "Pizza",
+  "importe": 12500,
+  "tipo": "egreso",
+  "categoria_id": 2
+}
+
+###PUT
+PUT http://localhost:8000/api/finanza.php?id=2
+Content-Type: application/json
+
+{
+  "fecha": "2025-10-20",
+  "descripcion": "Cuervo 1",
+  "importe": 5896,
+  "tipo": "ingreso",
+  "categoria_id": 2
+}
+
+###DELETE
+DELETE http://localhost:8000/api/finanza.php?id=1
