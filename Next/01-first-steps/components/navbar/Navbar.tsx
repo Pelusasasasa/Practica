@@ -11,7 +11,7 @@ const navItems = [
 export const Navbar = async () => {
     return (
         <nav className="flex bg-blue-800/30  p-2 m-2 rounded">
-            <span>Home</span>
+            <ActiveLink text="Home" path="/"/>
 
             <div className="flex flex-1"></div>
 
