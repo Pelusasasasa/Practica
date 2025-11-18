@@ -1,0 +1,16 @@
+# Sí, este Dockerfile está bien para una app Node.js con build step.
+FROM node:21-alpine
+
+WORKDIR /app
+
+COPY package.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+EXPOSE 3000
+
+CMD [ "npm", "start" ]
