@@ -1,5 +1,4 @@
-import React from "react";
-import { SimpleWidget } from "../../components";
+import { WidgetsGrid } from "../../components";
 
 export const metadata = {
   title: "Admin Dashboard",
@@ -12,9 +11,7 @@ const MainPage = () => {
       <h1 className="mt-2 text-3xl">Dashboard</h1>
       <span className="text-xl">Ingormacion General</span>
 
-      <div className="flex flex-wrap p-2">
-        <SimpleWidget />
-      </div>
+      <WidgetsGrid />
     </div>
   );
 };
