@@ -23,7 +23,7 @@ const PokemonsPage = async () => {
 
   return (
     <div className="flex flex-col">
-      <span className="text-5xl my-2">
+      <span className="text-5xl my-2 text-blue-500">
         Listado de Pokemons <small>estatico</small>
       </span>
 
