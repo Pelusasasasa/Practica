@@ -24,13 +24,13 @@ const menuItems = [
   {
     path: "/dashboard/pokemons",
     icon: <IoFootballOutline />,
-    title: "Favoritos",
+    title: "Pokemons",
     subtitle: "Global State",
   },
   {
     path: "/dashboard/favorites",
     icon: <IoHeartOutline />,
-    title: "Pokemons",
+    title: "Favoritos",
     subtitle: "Generacion Estatica",
   },
 ];
