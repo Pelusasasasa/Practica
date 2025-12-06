@@ -1,4 +1,3 @@
-import { Todo } from "@/generated/prisma/client";
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { boolean, object, string } from "yup";
