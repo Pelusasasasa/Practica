@@ -55,3 +55,21 @@ export async function POST(request: Request) {
     );
   }
 }
+
+export async function DELETE() {
+  try {
+    const todos = await prisma.todo.deleteMany({
+      where: {
+        completed: true,
+      },
+    });
+
+    return NextResponse.json(todos);
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { message: "Error al eliminar los todos" },
+      { status: 400 }
+    );
+  }
+}
