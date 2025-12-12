@@ -5,6 +5,7 @@ import { SideBarItem } from "./SideBarItem";
 import {
   IoCalendarOutline,
   IoCheckboxOutline,
+  IoCodeWorkingOutline,
   IoListOutline,
 } from "react-icons/io5";
 
@@ -18,6 +19,11 @@ const menuItems = [
     icon: <IoCheckboxOutline />,
     title: "Rest TODOS",
     path: "/dashboard/rest-todos",
+  },
+  {
+    icon: <IoCodeWorkingOutline />,
+    title: "Cookies",
+    path: "/dashboard/cookies",
   },
   {
     icon: <IoListOutline />,
