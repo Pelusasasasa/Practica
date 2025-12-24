@@ -9,4 +9,5 @@ Tienda Ecommerce hecha en el curso de devTalles de Fernando Herrera
 3. Instalar Dependencias `npm install`
 4. Levanta la base de datos `docker compose up -d`
 5. Correr las migraciones `npx prisma migrate dev`
-6. Correr el proyecto con `npm run dev`
+6. Ejecutar seed `npm run seed`
+7. Correr el proyecto con `npm run dev`
