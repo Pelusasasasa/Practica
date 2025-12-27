@@ -6,27 +6,30 @@ import { Gender } from '@/src/generated/prisma/enums'
 import { redirect } from 'next/navigation'
 
 interface Props {
+  params: {
+    gender: string
+  }
   searchParams: {
-    page: string
+    page?: string
   }
 }
 
-export default async function Home({ searchParams }: Props) {
-  const page = Number((await searchParams).page) || 1
+const CategoryPage = async ({ params, searchParams }: Props) => {
+  const { gender } = await params
 
-  const { products, currentPage, totalPages } = await getProductsPaginationWithImages({ page })
+  const { products, totalPages } = await getProductsPaginationWithImages({ gender: gender as Gender, page: Number(searchParams.page) })
 
   if (products.length === 0) {
-    redirect('/')
+    redirect(`/gender/${gender}`)
   }
 
   return (
     <>
-      <Title title="Tienda" subtitle="Todos los productos" className="mb-2" />
-
+      <Title title={'Tienda'} subtitle={`Vestimenta para ${gender}`} className="mb-2" />
       <ProductGrid products={products} />
-
       <Pagination totalPages={totalPages} />
     </>
   )
 }
+
+export default CategoryPage

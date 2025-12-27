@@ -3,8 +3,6 @@ import { PrismaPg } from '@prisma/adapter-pg'
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-console.log(process.env)
-
 const globalForPrisma = global as unknown as {
   prisma: PrismaClient
 }

@@ -15,8 +15,6 @@ const ProductPage = async ({ params }: Props) => {
 
   if (!product) return notFound()
 
-  console.log(product.images)
-
   return (
     <div className="mt-5 mb-20 grid md:grid-cols-3 gap-3">
       {/*Slideshow*/}
