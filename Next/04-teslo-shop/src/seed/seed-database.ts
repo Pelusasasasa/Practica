@@ -3,11 +3,14 @@ import { initialData } from './seed'
 
 //Borrar Registros Previos
 async function main() {
+  await prisma.user.deleteMany()
   await prisma.productImage.deleteMany()
   await prisma.product.deleteMany()
   await prisma.category.deleteMany()
 
-  const { categories } = initialData
+  const { users, categories } = initialData
+
+  await prisma.user.createMany({ data: users })
 
   //Crear Registros
   const categorias = categories.map(name => ({ name }))
