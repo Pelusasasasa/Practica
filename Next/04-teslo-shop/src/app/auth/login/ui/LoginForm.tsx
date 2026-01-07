@@ -1,12 +1,17 @@
 'use client'
 import Link from 'next/link'
-import { useActionState } from 'react'
+import { useActionState, useEffect } from 'react'
 import { authenticate } from '@/src/actions/auth/login'
+import { useFormStatus } from 'react-dom'
 
 export const LoginForm = () => {
   const [errorMessage, formAction, isPending] = useActionState(authenticate, undefined)
 
-  console.log({ errorMessage, formAction })
+  console.log(errorMessage)
+  useEffect(() => {
+    if (errorMessage === 'Invalid credentials.') {
+    }
+  }, [errorMessage])
 
   return (
     <form action={formAction} className="flex flex-col">
@@ -16,7 +21,13 @@ export const LoginForm = () => {
       <label htmlFor="email">Contraseña</label>
       <input className="px-5 py-2 border bg-gray-200 rounded mb-5" type="password" name="password" />
 
-      <button className="btn-primary">Ingresar</button>
+      {errorMessage === 'Invalid credentials.' && (
+        <div className="flex h-8 items-end space-x-1 mb-2" aria-live="polite" aria-atomic="true">
+          <p className="text-red-500">Credenciales inválidas</p>
+        </div>
+      )}
+
+      <LoginButton />
 
       {/* divisor l ine */}
       <div className="flex items-center my-5">
@@ -29,5 +40,15 @@ export const LoginForm = () => {
         Crear una nueva cuenta
       </Link>
     </form>
+  )
+}
+
+function LoginButton() {
+  const { pending } = useFormStatus()
+
+  return (
+    <button disabled={pending} className="btn-primary">
+      {pending ? 'Ingresando...' : 'Ingresar'}
+    </button>
   )
 }
